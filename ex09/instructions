@@ -1,0 +1,2 @@
+cd ros2_ws
+colcon edit tutorial_interfaces FullNameSumService.srv
