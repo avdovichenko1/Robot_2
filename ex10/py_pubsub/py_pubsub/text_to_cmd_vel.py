@@ -21,24 +21,23 @@ class TextToCmdVel(Node):
 
     def __init__(self):
         super().__init__('text_to_cmd_vel')
-        self.cmd_vel_publisher = self.create_publisher(Twist, '/turtle1/cmd_vel', 10)
-        self.cmd_text_subscription = self.create_subscription(String, 'cmd_text', self.cmd_text_callback, 10)
-        self.cmd_text_subscription
+        self.cmd_vel_publisher = self.create_publisher(Twist, '/turtle1/cmd_vel', 10) # издатель (publisher), сообщения типа Twist,команды управления движением публикуются в /turtle1/cmd_vel. 10 - размер очереди сообщений.
+        self.cmd_text_subscription = self.create_subscription(String, 'cmd_text', self.cmd_text_callback, 10) 
+        self.twist = Twist()
 
     def cmd_text_callback(self, msg):
-        cmd = msg.data.lower()  # Преобразование в нижний регистр
-        twist = Twist()
-
+        cmd = msg.data.lower()
+        
         if cmd == 'turn_right':
-            twist.angular.z = -1.5  # направо
+            self.twist.angular.z = -1.5
         elif cmd == 'turn_left':
-            twist.angular.z = 1.5  # налево
+            self.twist.angular.z = 1.5
         elif cmd == 'move_forward':
-            twist.linear.x = 1.0  # вперед
+            self.twist.linear.x = 1.0
         elif cmd == 'move_backward':
-            twist.linear.x = -1.0  # назад
+            self.twist.linear.x = -1.0
 
-        self.cmd_vel_publisher.publish(twist)
+        self.cmd_vel_publisher.publish(self.twist)
 
 def main(args=None):
     rclpy.init(args=args)
