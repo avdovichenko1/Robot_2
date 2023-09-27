@@ -30,13 +30,13 @@ class TextToCmdVel(Node):
         twist = Twist()
 
         if cmd == 'turn_right':
-            twist.angular.z = -1.5  # Угловая скорость (радианы в секунду) для поворота направо
+            twist.angular.z = -1.5  # направо
         elif cmd == 'turn_left':
-            twist.angular.z = 1.5  # Угловая скорость (радианы в секунду) для поворота налево
+            twist.angular.z = 1.5  # налево
         elif cmd == 'move_forward':
-            twist.linear.x = 1.0  # Линейная скорость (метры в секунду) для движения вперед
+            twist.linear.x = 1.0  # вперед
         elif cmd == 'move_backward':
-            twist.linear.x = -1.0  # Линейная скорость (метры в секунду) для движения назад
+            twist.linear.x = -1.0  # назад
 
         self.cmd_vel_publisher.publish(twist)
 
