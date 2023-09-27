@@ -13,9 +13,9 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='vikatop',
-    maintainer_email='v.tikhonova@g.nsu.ru',
-    description='Examples of minimal publisher/subscriber using rclpy',
+    maintainer='alina',
+    maintainer_email='alina@todo.todo',
+    description='TODO: Package description',
     license='Apache License 2.0',
     tests_require=['pytest'],
     entry_points={
